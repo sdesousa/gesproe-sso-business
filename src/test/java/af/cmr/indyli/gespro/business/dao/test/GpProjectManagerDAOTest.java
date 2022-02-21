@@ -54,7 +54,7 @@ public class GpProjectManagerDAOTest {
 		emp.setUpdateDate(new Date());
 		// When
 		//TODO 9 : Decommenter la ligne ci dessous
-		//emp = gpChefProjetRepository.save(emp);
+		emp = gpChefProjetRepository.save(emp);
 		this.createEmpId = emp.getId();
 
 		// Then
@@ -65,7 +65,7 @@ public class GpProjectManagerDAOTest {
 	public void testFindAllChefProjetWithSuccess() {
 		// Given
 		// When
-		List<GpProjectManager> emps = null; //TODO 2 : Remplacer le null par un findAllApproprié;
+		List<GpProjectManager> emps = gpChefProjetRepository.findAll(); //TODO 2 : Remplacer le null par un findAllApproprié;
 		// Then
 		Assert.assertTrue(emps.size() > 0);
 	}
@@ -75,7 +75,7 @@ public class GpProjectManagerDAOTest {
 		// Given
 		Integer empId = this.empIdForAllTest;
 		// When
-		GpProjectManager emp = null;//TODO 3 : Remplacer le NUll par la recherche en base;
+		GpProjectManager emp = this.gpChefProjetRepository.findById(empId).orElse(null);//TODO 3 : Remplacer le NUll par la recherche en base;
 		// Then
 		Assert.assertTrue(emp.getId() == empId);
 	}
@@ -88,11 +88,11 @@ public class GpProjectManagerDAOTest {
 		this.empIdForAllTest = null;
 		// Whens
 		//TODO 4 : Decommenter la ligne ci dessous
-		//this.gpChefProjetRepository.deleteById(empId);
-		boolean ifEmpExist = true;//TODO 5 : Tester l'existence en allant chercher en Base
+		this.gpChefProjetRepository.deleteById(empId);
+		GpProjectManager pm = gpChefProjetRepository.findById(empId).orElse(null);//TODO 5 : Tester l'existence en allant chercher en Base
 
 		// Then
-		Assert.assertFalse(ifEmpExist);
+		Assert.assertNull(pm);
 
 	}
 
@@ -109,7 +109,7 @@ public class GpProjectManagerDAOTest {
 		emp.setCreationDate(new Date());
 		emp.setUpdateDate(new Date());
 		//TODO 6 : Faire le necessaire pour aller enregistrer en Base
-		//emp = gpChefProjetRepository.save(emp);
+		emp = gpChefProjetRepository.save(emp);
 		this.empIdForAllTest = emp.getId();
 
 	}
@@ -118,12 +118,12 @@ public class GpProjectManagerDAOTest {
 	public void deleteAllEntityAfter() throws AccessDeniedException, GesproBusinessException {
 		if (this.empIdForAllTest != null) {
 			//TODO 7 : Decommenter la ligne ci dessous
-			//this.gpChefProjetRepository.deleteById(this.empIdForAllTest);
+			this.gpChefProjetRepository.deleteById(this.empIdForAllTest);
 		}
 
 		if (!Objects.isNull(this.createEmpId)) {
 			//TODO 8 : Decommenter la ligne ci dessous
-			//this.gpChefProjetRepository.deleteById(this.createEmpId);
+			this.gpChefProjetRepository.deleteById(this.createEmpId);
 		}
 	}
 }

@@ -55,7 +55,7 @@ public class GpProjectManagerServiceTest {
 		emp.setUpdateDate(new Date());
 		// When
 		//TODO 13 : Decommenter la ligne ci dessous
-		//emp = empPMService.create(emp);
+		emp = empPMService.create(emp);
 		this.createEmpId = emp.getId();
 
 		// Then
@@ -66,7 +66,7 @@ public class GpProjectManagerServiceTest {
 	public void testFindAllChefProjetWithSuccess() {
 		// Given
 		// When
-		List<GpProjectManagerBasicDTO> emps = null; //TODO 14 : Remplacer la valeur null
+		List<GpProjectManagerBasicDTO> emps = empPMService.findAll(); //TODO 14 : Remplacer la valeur null
 		// Then
 		Assert.assertTrue(emps.size() > 0);
 	}
@@ -76,7 +76,7 @@ public class GpProjectManagerServiceTest {
 		// Given
 		Integer empId = this.empIdForAllTest;
 		// When
-		GpProjectManagerFullDTO emp = null;//TODO 15 : remplacer le null;
+		GpProjectManagerFullDTO emp = empPMService.findById(empId);//TODO 15 : remplacer le null;
 		// Then
 		Assert.assertTrue(emp.getId() == empId);
 	}
@@ -89,8 +89,8 @@ public class GpProjectManagerServiceTest {
 		this.empIdForAllTest = null;
 		// When
 		//TODO 16 : Decommenter la ligne ci dessous , et recuperer l'emp par empId
-		//this.empPMService.deleteById(empId);
-		GpProjectManagerFullDTO emp = null; //this.empPMService.findById(empId);
+		this.empPMService.deleteById(empId);
+		GpProjectManagerFullDTO emp = this.empPMService.findById(empId);
 
 		// Then
 		Assert.assertNull(emp);
@@ -110,7 +110,7 @@ public class GpProjectManagerServiceTest {
 		emp.setCreationDate(new Date());
 		emp.setUpdateDate(new Date());
 		//TODO 16 : Decommenter la ligne ci dessous
-		//emp = empPMService.create(emp);
+		emp = empPMService.create(emp);
 		this.empIdForAllTest = emp.getId();
 
 	}
@@ -119,12 +119,12 @@ public class GpProjectManagerServiceTest {
 	public void deleteAllEntityAfter() throws AccessDeniedException, GesproBusinessException {
 		if (this.empIdForAllTest != null) {
 			//TODO 17 : Decommenter la ligne ci dessous
-			//this.empPMService.deleteById(this.empIdForAllTest);
+			this.empPMService.deleteById(this.empIdForAllTest);
 		}
 
 		if (!Objects.isNull(this.createEmpId)) {
 			//TODO 18 : Decommenter la ligne ci dessous
-			//this.empPMService.deleteById(this.createEmpId);
+			this.empPMService.deleteById(this.createEmpId);
 		}
 	}
 }

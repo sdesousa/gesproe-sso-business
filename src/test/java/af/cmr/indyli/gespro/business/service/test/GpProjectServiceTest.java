@@ -141,7 +141,7 @@ public class GpProjectServiceTest {
 		emp.setEmail("izi.ben@gouv.fr");
 		emp.setLogin("ben.izi");
 		emp.setCreationDate(new Date());
-		//emp = empService.create(emp);
+		emp = empService.create(emp);
 
 		this.pmTest = new GpProjectManagerFullDTO();
 		this.pmTest = emp;
@@ -191,7 +191,7 @@ public class GpProjectServiceTest {
 		}
 
 		if (!Objects.isNull(this.pmTest)) {
-			//this.empService.deleteById(this.pmTest.getId());
+			this.empService.deleteById(this.pmTest.getId());
 		}
 
 		if (!Objects.isNull(this.orgTest)) {

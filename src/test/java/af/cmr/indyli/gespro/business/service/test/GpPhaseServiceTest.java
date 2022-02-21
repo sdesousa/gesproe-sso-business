@@ -140,7 +140,7 @@ public class GpPhaseServiceTest {
 		emp.setLogin("turbo.pascal");
 		emp.setCreationDate(new Date());
 		//TODO 10 : Decommenter la ligne ci dessous
-		//emp = empService.create(emp);
+		emp = empService.create(emp);
 
 		this.pmTest = emp;
 		assertNotNull(this.pmTest);
@@ -201,7 +201,7 @@ public class GpPhaseServiceTest {
 		}
 		if (!Objects.isNull(this.pmTest)) {
 			//TODO 11 : Decommenter la ligne ci dessous
-			//this.empService.deleteById(this.pmTest.getId());
+			this.empService.deleteById(this.pmTest.getId());
 		}
 		if (!Objects.isNull(this.orgTest)) {
 			this.organizationService.deleteById(this.orgTest.getId());

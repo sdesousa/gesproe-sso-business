@@ -15,6 +15,7 @@ import af.cmr.indyli.gespro.business.utils.GesproConstantes.GesproConstantesServ
 @Service(GesproConstantesService.GP_PROJECT_SERVICE_KEY)
 public class GpProjectServiceImpl
 		extends AbstractGesproServiceImpl<GpProject, GpProjectBasicDTO, GpProjectFullDTO, IGpProjectRepository>
+		implements IGpProjectService
 //TODO 19 : Faire l'implémentation necessaire		
 {
 

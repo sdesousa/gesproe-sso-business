@@ -15,13 +15,13 @@ import af.cmr.indyli.gespro.business.utils.GesproConstantes.GesproConstantesServ
 @Service(GesproConstantesService.GP_CHEF_PROJET_SERVICE_KEY)
 public class GpProjectManagerServiceImpl 
 
-		//extends AbstractGesproServiceImpl<GpProjectManager, GpProjectManagerBasicDTO, GpProjectManagerFullDTO, IGpProjectManagerRepository>
-		//implements IGpProjectManagerService 
+		extends AbstractGesproServiceImpl<GpProjectManager, GpProjectManagerBasicDTO, GpProjectManagerFullDTO, IGpProjectManagerRepository>
+		implements IGpProjectManagerService 
 {
 
 
 	public GpProjectManagerServiceImpl() {
-		//super(GpProjectManager.class, GpProjectManagerBasicDTO.class, GpProjectManagerFullDTO.class);
+		super(GpProjectManager.class, GpProjectManagerBasicDTO.class, GpProjectManagerFullDTO.class);
 	}
 
 	@Resource(name = GesproConstantesDAO.GP_CHEF_PROJET_DAO)
